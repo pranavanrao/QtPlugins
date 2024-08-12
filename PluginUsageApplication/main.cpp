@@ -1,5 +1,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QCoreApplication>
 
 int main(int argc, char *argv[])
 {
@@ -10,7 +11,9 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
-    engine.addImportPath("C:/Users/prana/OneDrive/Desktop/QT-QML-projects/QtPlugins/MyButton/bins");
+    // QString pluginPath = "C:/Users/prana/OneDrive/Desktop/QT-QML-projects/QtPlugins/MyButton/bins";
+    QString pluginPath = QCoreApplication::applicationDirPath() + "./bins";
+    engine.addImportPath(pluginPath);
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(
